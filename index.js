@@ -1,5 +1,48 @@
 /* Your Code Here */
 
+const createEmployeeRecord = (employee) => {
+    return {
+        firstName: employee[0],
+        familyName: employee[1],
+        title: employee[2],
+        payPerHour: employee[3],
+        timeInEvents: [],
+        timeOutEvents: []
+    }
+};
+
+const createEmployeeRecords = (employeeList) => {
+    return employeeList.map(emp => createEmployeeRecord(emp))
+};
+
+const createTimeInEvent = (timeStamp) => {
+    let dateTime = timeStamp.split(" ")
+    let inHour = parseInt(dateTime[1], 10)
+    let inDate = dateTime[0]
+
+    this.timeInEvents.push({
+        type: "TimeIn",
+        hour: inHour,
+        date: inDate
+    })
+
+    return this
+}
+
+const createTimeOutEvent = (timeStamp) => {
+    let dateTime = timeStamp.split(" ")
+    let inHour = parseInt(dateTime[1], 10)
+    let inDate = dateTime[0]
+
+    this.timeOutEvents.push({
+        type: "TimeOut",
+        hour: inHour,
+        date: inDate
+    })
+
+    return this
+}
+
 /*
  We're giving you this function. Take a look at it, you might see some usage
  that's new and different. That's because we're avoiding a well-known, but
