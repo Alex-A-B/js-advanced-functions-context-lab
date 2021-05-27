@@ -15,7 +15,7 @@ const createEmployeeRecords = (employeeList) => {
     return employeeList.map(emp => createEmployeeRecord(emp))
 };
 
-const createTimeInEvent = (timeStamp) => {
+const createTimeInEvent = function(timeStamp){
     let dateTime = timeStamp.split(" ")
     let inHour = parseInt(dateTime[1], 10)
     let inDate = dateTime[0]
@@ -25,11 +25,10 @@ const createTimeInEvent = (timeStamp) => {
         hour: inHour,
         date: inDate
     })
-
     return this
 }
 
-const createTimeOutEvent = (timeStamp) => {
+const createTimeOutEvent = function(timeStamp){
     let dateTime = timeStamp.split(" ")
     let inHour = parseInt(dateTime[1], 10)
     let inDate = dateTime[0]
@@ -43,7 +42,7 @@ const createTimeOutEvent = (timeStamp) => {
     return this
 }
 
-const hoursWorkedOnDate = (targetDate) => {
+const hoursWorkedOnDate = function(targetDate){
     let inEvent = this.timeInEvents.find( e => {
         return e.date === targetDate
     });
@@ -54,7 +53,7 @@ const hoursWorkedOnDate = (targetDate) => {
         return (outEvent.hour - inEvent.hour) / 100
 }
 
-const wagesEarnedOnDate = (targetDate) => {
+const wagesEarnedOnDate = function(targetDate){
     return hoursWorkedOnDate.call(this, targetDate) * this.payPerHour
 }
 
@@ -91,3 +90,27 @@ let allWagesFor = function () {
 
     return payable
 }
+
+// let createTimeInEvent = function(dateStamp){
+//     let [date, hour] = dateStamp.split(' ')
+
+//     this.timeInEvents.push({
+//         type: "TimeIn",
+//         hour: parseInt(hour, 10),
+//         date,
+//     })
+
+//     return this
+// }
+
+// let createTimeOutEvent = function(dateStamp){
+//     let [date, hour] = dateStamp.split(' ')
+
+//     this.timeOutEvents.push({
+//         type: "TimeOut",
+//         hour: parseInt(hour, 10),
+//         date,
+//     })
+
+//     return this
+// }
