@@ -43,6 +43,34 @@ const createTimeOutEvent = (timeStamp) => {
     return this
 }
 
+const hoursWorkedOnDate = (targetDate) => {
+    let inEvent = this.timeInEvents.find( e => {
+        return e.date === targetDate
+    });
+    
+    let outEvent = this.timeOutEvents.find( e => {
+        return e.date === targetDate
+    })
+        return (outEvent.hour - inEvent.hour) / 100
+}
+
+const wagesEarnedOnDate = (targetDate) => {
+    return hoursWorkedOnDate.call(this, targetDate) * this.payPerHour
+}
+
+const findEmployeeByFirstName = (srcArray, firstName) => {
+    return srcArray.find( (emp) => {
+        return emp.firstName === firstName
+    })
+}
+
+const calculatePayroll = (arrayOfEmployees) => {
+    return arrayOfEmployees.reduce( (tally, employee) =>{
+        return tally + allWagesFor.call(employee)
+    }, 0)
+}
+
+
 /*
  We're giving you this function. Take a look at it, you might see some usage
  that's new and different. That's because we're avoiding a well-known, but
